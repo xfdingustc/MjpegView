@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.xfdingustc.mjpegview.sample.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="192.168.31.243"/>
+
+        <EditText
+            android:id="@+id/port"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:text="8081"/>
+
+
+        <Button
+            android:id="@+id/connect"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:text="connect"/>
+
+    </LinearLayout>
+
+    <com.xfdingustc.far.FixedAspectRatioFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:farfl_xratio="16dp"
+        app:farfl_yratio="9dp">
+
+        <com.xfdingustc.mjpegview.library.MjpegView
+            android:id="@+id/mjpeg_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.xfdingustc.far.FixedAspectRatioFrameLayout>
+
+
+
+
+
+</LinearLayout>

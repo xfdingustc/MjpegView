@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "com.xfdingustc.mjpegview.sample"
+        minSdkVersion 19
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+    maven {
+        url "https://dl.bintray.com/xfdingustc/maven"
+    }
+
+    maven {
+        url "http://oss.sonatype.org/content/repositories/snapshots/"
+    }
+    maven {
+        url "https://jitpack.io"
+    }
+
+
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.orhanobut:logger:1.11'
+    compile 'com.xfdingustc.fixaspectratiolayout:layout:0.2@aar'
+    compile project(':library')
+}
