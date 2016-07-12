@@ -138,8 +138,8 @@ abstract public class MjpegReceiver extends Thread {
         out.flush();
 
         mBuffer = new MjpegBuffer(mSocket.getInputStream());
-        mBuffer.refill();
-        mBuffer.skipHttpEnd();
+//        mBuffer.refill();
+//        mBuffer.skipHttpEnd();
     }
 
     private void readOneFrame() throws IOException {
@@ -153,6 +153,8 @@ abstract public class MjpegReceiver extends Thread {
             throw new IOException("cannot get Content-Length");
         }
 
+
+        Log.d(TAG, "framelength: " + frameLen);
         // skip http header
         mBuffer.skipHttpEnd();
 

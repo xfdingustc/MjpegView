@@ -33,10 +33,7 @@ public class MjpegBuffer {
 		return new String(data, offset, size, Charset.forName("UTF-8"));
 	}
 
-	public void reset() {
-		offset = 0;
-		size = 0;
-	}
+
 
 	private void readFully(byte[] buf, int offset, int size) throws IOException {
 		while (size > 0) {
