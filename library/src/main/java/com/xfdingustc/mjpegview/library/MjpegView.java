@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-
 import com.orhanobut.logger.Logger;
 import com.xfdingustc.mjpegview.library.mina.MjpegCodecFactory;
 
@@ -20,11 +19,9 @@ import org.apache.mina.core.service.IoServiceListener;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
-import org.apache.mina.transport.socket.DefaultSocketSessionConfig;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
 import java.net.InetSocketAddress;
-
 
 
 public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
@@ -135,7 +132,7 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
             @Override
             public void messageReceived(IoSession session, Object message) throws Exception {
 //                super.messageReceived(session, message);
-                Bitmap bitmap = (Bitmap)message;
+                Bitmap bitmap = (Bitmap) message;
                 drawBitmap(bitmap);
             }
         });
@@ -158,7 +155,6 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
             Logger.t(TAG).d("connection error");
         }
     }
-
 
 
     public void stopStream() {
