@@ -36,7 +36,7 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
     private IoConnector mConnector = null;
     private SurfaceHolder mSurfaceHolder;
 
-    private boolean mUseMina = true;
+    private boolean mUseMina = false;
 
 
     public MjpegView(Context context) {
@@ -73,6 +73,10 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
         mSurfaceHolder = getHolder();
         mSurfaceHolder.addCallback(this);
         mMjpegStream = new MyMjpegStream();
+    }
+
+    public void setMinaEnabled(boolean enableMina) {
+        mUseMina = enableMina;
     }
 
 

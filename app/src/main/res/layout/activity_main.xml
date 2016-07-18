@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="192.168.110.1"/>
+            android:text="192.168.31.227"/>
 
         <EditText
             android:id="@+id/port"
@@ -51,19 +51,28 @@
     </com.xfdingustc.far.FixedAspectRatioFrameLayout>
 
 
+
+    <Switch
+        android:id="@+id/use_mina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Use mina"/>
+
+
     <Button
         android:id="@+id/connect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="connect"/>
+        android:layout_marginTop="16dp"
+        android:text="Start Preview"/>
 
     <Button
         android:id="@+id/disconnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="disconnect"/>
+        android:layout_marginTop="16dp"
+        android:text="Stop Preview"/>
 
 
 
