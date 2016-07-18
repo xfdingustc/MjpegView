@@ -20,6 +20,7 @@ import org.apache.mina.core.service.IoServiceListener;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
+import org.apache.mina.transport.socket.DefaultSocketSessionConfig;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
 import java.net.InetSocketAddress;
@@ -34,6 +35,8 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
     private IoSession mSession = null;
     private IoConnector mConnector = null;
     private SurfaceHolder mSurfaceHolder;
+
+    private boolean mUseMina = true;
 
 
     public MjpegView(Context context) {
@@ -74,7 +77,7 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
 
 
     public void startStream(final InetSocketAddress serverAddr) {
-        if (true) {
+        if (mUseMina) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -89,6 +92,7 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
     private void startPreviewSocketConnection(InetSocketAddress serverAddr) {
         mConnector = new NioSocketConnector();
         mConnector.setConnectTimeoutMillis(5000);
+
 
         mConnector.getFilterChain().addLast("codec", new ProtocolCodecFilter(new MjpegCodecFactory()));
         mConnector.addListener(new IoServiceListener() {
@@ -137,6 +141,8 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
             Logger.t(TAG).d("start connection");
             future.awaitUninterruptibly();
             mSession = future.getSession();
+            mSession.getConfig().setReadBufferSize(100000);
+
             Logger.t(TAG).d("connected");
 
             // write
@@ -152,7 +158,11 @@ public class MjpegView extends SurfaceView implements SurfaceHolder.Callback {
 
 
     public void stopStream() {
-        mMjpegStream.stop();
+        if (mUseMina) {
+            mSession.close();
+        } else {
+            mMjpegStream.stop();
+        }
     }
 
 

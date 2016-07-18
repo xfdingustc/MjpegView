@@ -14,7 +14,7 @@ abstract public class MjpegDecoder extends Thread {
     protected final BitmapBuffer.Manager mBitmapManager;
     protected final BitmapFactory.Options mOptions;
 
-    // callback - bb may be null
+
     abstract public void onBitmapDecodedAsync(MjpegDecoder decoder, boolean isEvent);
 
     public MjpegDecoder(SimpleQueue<ByteArrayBuffer> inputQ, SimpleQueue<BitmapBuffer> outputQ) {
@@ -28,12 +28,12 @@ abstract public class MjpegDecoder extends Thread {
         mOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
     }
 
-    // API
+
     public void shutdown() {
         interrupt();
     }
 
-    // API
+
     public final BitmapBuffer getBitmapBuffer() {
         return mOutputQ.peekObject();
     }
@@ -89,10 +89,10 @@ abstract public class MjpegDecoder extends Thread {
         buffer.recycle();
         bb.setBitmap(bitmap);
 
-        // save the result in Q
+
         mOutputQ.putObject(bb);
 
-        // notify
+
         onBitmapDecodedAsync(this, false);
     }
 }

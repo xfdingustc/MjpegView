@@ -19,12 +19,7 @@ import java.nio.ByteOrder;
  */
 public class MjpegDecoder extends CumulativeProtocolDecoder {
     private static final String TAG = MjpegDecoder.class.getSimpleName();
-    private static final byte[] HTTP_END = {'\r', '\n', '\r', '\n'};
-    // Content-Length:
-    private static final byte[] Content_Length = {'C', 'o', 'n', 't', 'e', 'n', 't', '-', 'L', 'e', 'n', 'g', 't',
-        'h', ':'};
 
-    private byte[] tempBuffer = new byte[8192 * 4];
 
     private static MjpegBuffer2 mjpegBuffer2 = new MjpegBuffer2();
 

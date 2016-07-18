@@ -12,12 +12,12 @@ public class BitmapBuffer implements IRecyclable {
 		mBitmap = bitmap;
 	}
 
-	// API
+
 	public final Bitmap getBitmap() {
 		return mBitmap;
 	}
 
-	// API
+
 	public final void setBitmap(Bitmap bitmap) {
 		mBitmap = bitmap;
 	}
