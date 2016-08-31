@@ -4,7 +4,7 @@ import com.orhanobut.logger.Logger;
 
 import java.net.InetSocketAddress;
 
-abstract public class MjpegStream {
+public abstract class MjpegStream {
 
     abstract protected void onBitmapReadyAsync(MjpegDecoder decoder, MjpegStream stream);
 

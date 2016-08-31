@@ -154,7 +154,6 @@ abstract public class MjpegReceiver extends Thread {
         }
 
 
-        Log.d(TAG, "framelength: " + frameLen);
         // skip http header
         mBuffer.skipHttpEnd();
 

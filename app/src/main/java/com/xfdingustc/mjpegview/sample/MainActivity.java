@@ -32,14 +32,12 @@ public class MainActivity extends AppCompatActivity {
         mBtnConnect = (Button)findViewById(R.id.connect);
         mBtnDisconnect = (Button)findViewById(R.id.disconnect);
         mMjpegView = (MjpegView)findViewById(R.id.mjpeg_view);
-        mUseMina = (Switch)findViewById(R.id.use_mina);
 
         mBtnConnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String address = mEtAddress.getText().toString();
                 int port = Integer.parseInt(mEtPort.getText().toString());
-                mMjpegView.setMinaEnabled(mUseMina.isChecked());
                 mMjpegView.startStream(new InetSocketAddress(address, port));
             }
         });
